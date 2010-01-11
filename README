@@ -33,3 +33,4 @@ CHANGELOG
 
 11.01.2010
 	Moritz: created repository with basic folder structure
+	Benjamin: XULs and basic overlay added, as well as filled in the .manifest and the .rdf
