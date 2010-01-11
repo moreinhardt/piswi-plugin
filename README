@@ -1,5 +1,21 @@
 Wenn ihr etwas verändert und pusht, bitte immer hier den Tag hinzufügen bzw. bei dem entsprechenden Tag mit eurem Namen schreiben, was ihr gemacht habt. Kann ruhig in chronologischer Reihenfolge sein, dass das neueste immer unten ist ;-)
 
+Working with this repository:
+
+"git clone git@github.com:Taifun/piswi-plugin.git"
+Einmal in dem Verzeichnis, wo ihr das repo lokal speichern wollt.
+Dann an den files arbeiten, sie erstellen/modifizieren/löschen, die entsprechenden Dateien mittels
+"git add <filename>"
+hinzufügen. Alternativ kann man auch ins Wurzelverzeichnis gehen und mittels 
+"git add ." alle files und folder rekursiv auf einmal hinzufügen (eh nur die, die modifiziert wurden)
+Dann mittels
+git commit -m "<message>"
+commiten und eine kurze message die sagt, welcher commit das ist (was neu ist) -> steht dann in github als message bei den veränderten files.
+Als letztes mit
+"git push origin master"
+pushen, das sollte funktionieren.
+
+
 gute links:
 	git ->
 	http://git.or.cz/course/svn.html
