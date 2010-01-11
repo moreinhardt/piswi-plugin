@@ -4,7 +4,7 @@
      xmlns:em="http://www.mozilla.org/2004/em-rdf#">
 
   <Description about="urn:mozilla:install-manifest">
-    <em:id>a0847315@unet.univie.ac.at</em:id>
+    <em:id>piswirequest@taifun21.homelinux.org</em:id>
     <em:version>1.0</em:version>
     <em:type>2</em:type>
    
@@ -20,8 +20,8 @@
    
     <!-- Front End MetaData -->
     <em:name>piswi</em:name>
-    <em:description>A test extension</em:description>
-    <em:creator>BK</em:creator>
-    <em:homepageURL>http://www.example.com/</em:homepageURL>
+    <em:description>This plug-in lets you easily display your current results/marks from your PISWI account.</em:description>
+    <em:creator>Cigan Richard, Kitzinger Benjamin, Reinhardt Moritz</em:creator>
+    <em:homepageURL>http://github.com/Taifun/piswi-plugin</em:homepageURL>
   </Description>      
 </RDF>

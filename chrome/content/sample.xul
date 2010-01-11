@@ -3,7 +3,7 @@
 <!DOCTYPE overlay SYSTEM "chrome://helloworld/locale/overlay.dtd">
 <overlay id="piswi-overlay"
     xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">
-  <script src="openprefs.js"/>
+  <script src="request.js"/>
   
 <popupset>
   <menupopup id="showpiswires" position="before_end">
@@ -35,6 +35,7 @@
   <menupopup id="menu_ToolsPopup">
     <menuitem id="piswipref" label="PISWI Preferences"
         oncommand="openprefs.onMenuItemCommand(event);"/>
+    <menuitem id="piswirequest" label="send PISWI request" oncommand="piswirequest.onMenuItemCommand(event);"/>
   </menupopup>
   
   <statusbar id="status-bar">

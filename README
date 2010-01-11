@@ -20,15 +20,20 @@ Als letztes mit
 pushen, das sollte funktionieren.
 
 
-gute links:
+Links:
 	git:
 	http://git.or.cz/course/svn.html
 	http://spheredev.org/wiki/Git_for_the_lazy
 	firefox-extension:
 	http://www.borngeek.com/firefox/toolbar-tutorial/
+	http://kb.mozillazine.org/Getting_started_with_extension_development#Registering_your_extension_in_the_Extension_Manager anleitung um lokal zu testen //wichtig: firefox nach Änderungen an den Dateien immer neustarten!
 dieser link kann uns denk ich besonders helfen, in anbetracht dass wir mit HTTP-Requests arbeiten und dynamisch sein müssen:
 	https://developer.mozilla.org/En/Creating_a_dynamic_status_bar_extension
 	https://developer.mozilla.org/en/Dynamically_modifying_XUL-based_user_interface
+
+Um mehrere Firefox-Instanzen nebeneinander laufen zu haben, kann mittels -no-remote gestartet werden. Um zB. nur das "dev" profil zu verwenden:
+firefox -no-remote -P dev &
+(auf linux..., geht aber auch auf windows)
 
 -----------------------------------------------------------------------------
 
@@ -37,3 +42,7 @@ CHANGELOG
 11.01.2010
 	Moritz: created repository with basic folder structure
 	Benjamin: XULs and basic overlay added, as well as filled in the .manifest and the .rdf
+	Moritz:	changed install.rdf -> IMPORTANT: id now piswirequest@taifun21.homelinux.org
+		removed dummyfile; 
+		openprefs.js - renamed to request.js + added request-code
+		sample.xul - added a button to test the request
