@@ -26,6 +26,8 @@ gute links:
 	http://spheredev.org/wiki/Git_for_the_lazy
 	firefox-extension:
 	http://www.borngeek.com/firefox/toolbar-tutorial/
+dieser link kann uns denk ich besonders helfen, in anbetracht dass wir mit HTTP-Requests arbeiten und dynamisch sein müssen:
+	https://developer.mozilla.org/En/Creating_a_dynamic_status_bar_extension
 
 -----------------------------------------------------------------------------
 
