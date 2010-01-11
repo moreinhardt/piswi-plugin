@@ -4,6 +4,10 @@ Working with this repository:
 
 "git clone git@github.com:Taifun/piswi-plugin.git"
 Einmal in dem Verzeichnis, wo ihr das repo lokal speichern wollt.
+
+Jedesmal vor Arbeitsbeginn
+"git pull origin master"
+um etwaige Änderungen von anderen zu laden.
 Dann an den files arbeiten, sie erstellen/modifizieren/löschen, die entsprechenden Dateien mittels
 "git add <filename>"
 hinzufügen. Alternativ kann man auch ins Wurzelverzeichnis gehen und mittels 
