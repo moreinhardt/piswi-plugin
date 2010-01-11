@@ -1,0 +1,49 @@
+﻿<?xml version="1.0"?>
+<?xml-stylesheet href="chrome://helloworld/skin/overlay.css" type="text/css"?>
+<!DOCTYPE overlay SYSTEM "chrome://helloworld/locale/overlay.dtd">
+<overlay id="piswi-overlay"
+    xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">
+  <script src="openprefs.js"/>
+  
+<popupset>
+  <menupopup id="showpiswires" position="before_end">
+    <hbox>
+     <menuitem oncommand="window.open('http://piswi.pri.univie.ac.at')">
+      <image src="chrome://piswi/content/piswilogo.png"/>    
+     </menuitem>
+    </hbox>
+    <hbox>
+	 <image src="http://piswi.pri.univie.ac.at/piswi/1.gif"/>
+	 <description value=" PI.DBS.DB.UE"/>
+	 <description value=" Note: 2"/>
+	</hbox>
+	<hbox>
+	 <image src="http://piswi.pri.univie.ac.at/piswi/v.gif"/>
+	 <description value=" PI.ADS.AD.UE"/>
+	 <description value=" Note: 3"/>
+	</hbox>
+    <hbox>
+	 <image src="http://piswi.pri.univie.ac.at/piswi/5.gif"/>
+	 <description value=" PS.MBT.MB.UE"/>
+	 <description value=" Note: 5"/>
+	</hbox>
+  </menupopup>
+</popupset>
+
+
+
+  <menupopup id="menu_ToolsPopup">
+    <menuitem id="piswipref" label="PISWI Preferences"
+        oncommand="openprefs.onMenuItemCommand(event);"/>
+  </menupopup>
+  
+  <statusbar id="status-bar">
+   <statusbarpanel id="status-bar-sample-1">
+   <toolbarbutton src="http://piswi.pri.univie.ac.at/piswi/1.gif"
+   				  class="statusbarpanel-iconic" popup="showpiswires"
+   				  />
+   </statusbarpanel>
+ </statusbar>
+
+</overlay> 
+

@@ -1,0 +1,32 @@
+<?xml version="1.0"?>
+<?xml-stylesheet href="chrome://global/skin/" type="text/css"?>
+<!-- Extremely recommended to keep this css include!! -->
+<window id="rootWnd" title="PISWI preferences"
+        xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">
+  <vbox>
+    <hbox>
+      <image src="piswilogo.png"/>
+    </hbox>
+    <description>Hier können Sie Ihre Login-Daten eingeben.</description>
+    <groupbox align="start">
+      <caption label="Ihre Login Informationen:"/>
+      <radiogroup>
+        <vbox>
+          <hbox>
+            <label control="your-fname" value="Matrikelnummer:"/>
+            <textbox id="piswi_username" maxlength="7"/>
+          </hbox>
+          <hbox>
+            <label control="your-lname" value="Passwort:"/>
+            <textbox id="piswi_password" type="password"/>
+          </hbox>
+          <hbox>
+            <button oncommand="alert('save!')">
+              <description>Save</description>
+            </button>
+          </hbox>
+        </vbox>
+      </radiogroup>
+    </groupbox>
+  </vbox>
+</window>

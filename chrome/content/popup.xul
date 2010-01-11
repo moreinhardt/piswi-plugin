@@ -1,0 +1,5 @@
+<panel id="popup">
+  <image src="piswilogo.png"/>
+  <label control="search" value="Terms:"/>
+  <textbox id="search"/>
+</panel>
