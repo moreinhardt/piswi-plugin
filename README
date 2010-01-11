@@ -46,3 +46,5 @@ CHANGELOG
 		removed dummyfile; 
 		openprefs.js - renamed to request.js + added request-code
 		sample.xul - added a button to test the request
+12.01.2010
+	Benjamin: added sarcasm to the piswilogo.
