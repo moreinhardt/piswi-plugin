@@ -44,14 +44,35 @@ var piswirequest = {
 //			xmlHttpObject.setRequestHeader('Referer','http://sibelius.pri.univie.ac.at:8885/piswi/xxx/piswi.x');
 			xmlHttpObject.onreadystatechange = function (aEvt) {  
 				if (xmlHttpObject.readyState == 4) {  
-					if(xmlHttpObject.status == 200)
+					if(xmlHttpObject.status == 200) {
 						alert(xmlHttpObject.responseText);
-					else
+						alert(xmlHttpObject.responseXML);
+						infoReceived();
+					} else
 						alert("Error loading page\n");  
 				}
 			}; //TODO KENNWORT
 			xmlHttpObject.send("imnr=0804616&ikenn=KENNWORT&isid="+isid+"&imod="+imod);
+			//using DOM to modify the xul-file and insert the information
+			function infoReceived() {
+				var samplepopup = document.getElementById('showpiswires');
+				var output = xmlHttpObject.responseText;
 
+				//search string for first course
+				var tdcount = 0;
+				var position = 0;
+				do {
+					position = position + output.search("<TD");
+					output = output.slice(position);
+					tdcount++;
+				} while (tdcount < 75);
+				alert(position);
+				/*var output = xmlHttpObject.responseXML;
+
+				var tds = output.getElementsByTagName("TD");
+				var first_course = tds.item(199);
+				alert(first_course.childNodes.item(0).nodeValue);*/
+			}
 		} else alert("error loading page!");
 	}
     }
