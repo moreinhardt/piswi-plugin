@@ -48,3 +48,4 @@ CHANGELOG
 		sample.xul - added a button to test the request
 12.01.2010
 	Benjamin: added sarcasm to the piswilogo.
+	Moritz: request.js - played with the responseText
