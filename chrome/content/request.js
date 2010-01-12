@@ -29,7 +29,7 @@ var piswirequest = {
 	if(xmlHttpObject.readyState == 4) {
 		if(xmlHttpObject.status == 200) {
 			var returnstring = xmlHttpObject.responseText;
-			alert(returnstring);
+			//alert(returnstring);
 			var id_anfang = returnstring.search(/NAME=isid/);
 			var isid = returnstring.slice(id_anfang + 17, id_anfang + 17 + 20);
 			var imod_anfang = returnstring.search(/NAME=imod/);
@@ -45,8 +45,7 @@ var piswirequest = {
 			xmlHttpObject.onreadystatechange = function (aEvt) {  
 				if (xmlHttpObject.readyState == 4) {  
 					if(xmlHttpObject.status == 200) {
-						alert(xmlHttpObject.responseText);
-						alert(xmlHttpObject.responseXML);
+						//alert(xmlHttpObject.responseText);
 						infoReceived();
 					} else
 						alert("Error loading page\n");  
@@ -62,11 +61,17 @@ var piswirequest = {
 				var tdcount = 0;
 				var position = 0;
 				do {
-					position = position + output.search("<TD");
-					output = output.slice(position);
+					var tempposition = output.search("<TD");
+					position = position + tempposition + 3;
+					output = output.slice(tempposition + 3); //+3 so current "<TD" is skipped
+					//alert(tempposition + output);
+					//alert(tdcount + output);
 					tdcount++;
 				} while (tdcount < 75);
-				alert(position);
+				var endposition = position + output.search("</TD");
+				position = position -3; //remove first +3 because none was added in the beginning
+				var inhalt = xmlHttpObject.responseText.substring(position, endposition);
+				alert(inhalt);
 				/*var output = xmlHttpObject.responseXML;
 
 				var tds = output.getElementsByTagName("TD");

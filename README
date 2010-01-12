@@ -49,3 +49,4 @@ CHANGELOG
 12.01.2010
 	Benjamin: added sarcasm to the piswilogo.
 	Moritz: request.js - played with the responseText
+	Moritz: request.js - cutting out first course works basically
