@@ -50,3 +50,5 @@ CHANGELOG
 	Benjamin: added sarcasm to the piswilogo.
 	Moritz: request.js - played with the responseText
 	Moritz: request.js - cutting out first course works basically
+13.01.2010
+	Moritz: request.js - added request to display only my lvs with lecturer + mark
