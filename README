@@ -52,3 +52,5 @@ CHANGELOG
 	Moritz: request.js - cutting out first course works basically
 13.01.2010
 	Moritz: request.js - added request to display only my lvs with lecturer + mark
+14.01.2010
+	Richard: piswiprefs.xul - Modified the login preferences screen
