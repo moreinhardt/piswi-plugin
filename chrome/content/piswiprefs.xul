@@ -7,22 +7,30 @@
     <hbox>
       <image src="piswilogo.png"/>
     </hbox>
-    <description>Hier können Sie Ihre Login-Daten eingeben.</description>
+    <description>Hier können Sie Ihre Login-Daten eingeben</description>
     <groupbox align="start">
       <caption label="Ihre Login Informationen:"/>
       <radiogroup>
         <vbox>
           <hbox>
-            <label control="your-fname" value="Matrikelnummer:"/>
-            <textbox id="piswi_username" maxlength="7"/>
+			<vbox>
+				<label control="your-fname" value="Matrikelnummer:"/>
+				<label control="your-lname" value="Passwort:"/>
+			</vbox>
+			<vbox>
+				<textbox id="piswi_username" maxlength="7"/>
+				<textbox id="piswi_password" maxlength="8" type="password"/>
+			</vbox>
           </hbox>
+		  <hbox>
+			<checkbox label="Save Matrikelnummer and Password" checked="false"/>
+		  </hbox>
+		  <hbox>
+			<checkbox label="Login when Firefox starts" checked="false" disabled="true"/>
+		  </hbox>
           <hbox>
-            <label control="your-lname" value="Passwort:"/>
-            <textbox id="piswi_password" type="password"/>
-          </hbox>
-          <hbox>
-            <button oncommand="alert('save!')">
-              <description>Save</description>
+            <button oncommand="alert('login!')">
+              <description>Login</description>
             </button>
           </hbox>
         </vbox>
