@@ -3,6 +3,7 @@
 <!-- Extremely recommended to keep this css include!! -->
 <window id="rootWnd" title="PISWI preferences"
         xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">
+		<script src="piswiprefs.js"/>	
   <vbox>
     <hbox>
       <image src="piswilogo.png"/>
@@ -23,13 +24,13 @@
 			</vbox>
           </hbox>
 		  <hbox>
-			<checkbox label="Save Matrikelnummer and Password" checked="false"/>
+			<checkbox label="Save Matrikelnummer and Password" id="save_login" checked="false" oncommand="updateState();"/>
 		  </hbox>
 		  <hbox>
-			<checkbox label="Login when Firefox starts" checked="false" disabled="true"/>
+			<checkbox label="Login when Firefox starts" id="auto_login" checked="false" disabled="true"/>
 		  </hbox>
           <hbox>
-            <button oncommand="alert('login!')">
+            <button oncommand="login();">
               <description>Login</description>
             </button>
           </hbox>
