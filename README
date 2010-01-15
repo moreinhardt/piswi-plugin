@@ -54,3 +54,5 @@ CHANGELOG
 	Moritz: request.js - added request to display only my lvs with lecturer + mark
 14.01.2010
 	Richard: piswiprefs.xul - Modified the login preferences screen
+15.01.2010
+	Richard: piswiprefs.xul - Added some ID's to piswiprefs.xul and added a first test script to it
