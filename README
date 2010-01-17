@@ -56,3 +56,5 @@ CHANGELOG
 	Richard: piswiprefs.xul - Modified the login preferences screen
 15.01.2010
 	Richard: piswiprefs.xul - Added some ID's to piswiprefs.xul and added a first test script to it
+17.01.2010
+	Moritz: request.js - parser now working on LVs with description + lecturer
