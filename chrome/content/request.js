@@ -27,17 +27,13 @@ var piswirequest = {
     // Funktion, die bei Statusänderungen reagiert
     function handleStateChange()
     {
- //       alert(xmlHttpObject.responseText);
 	if(xmlHttpObject.readyState == 4) {
 		if(xmlHttpObject.status == 200) {
 			var returnstring = xmlHttpObject.responseText;
-			//alert(returnstring);
 			var id_anfang = returnstring.search(/NAME=isid/);
 			var isid = returnstring.slice(id_anfang + 17, id_anfang + 17 + 20);
 			var imod_anfang = returnstring.search(/NAME=imod/);
 			var imod = returnstring.slice(imod_anfang + 16, imod_anfang + 16 + 1);
-			//alert("isid: "+isid);
-			//alert("imod: "+imod);
 
 			xmlHttpObject.open('POST', 'http://sibelius.pri.univie.ac.at:8885/piswi/xxx/piswi.x');
 			xmlHttpObject.setRequestHeader('Content-Type','application/x-www-form-urlencoded');
@@ -62,7 +58,7 @@ var piswirequest = {
 									alert("Error loading page\n");
 							}
 						}
-						xmlHttpObject.send("iknr=521&ipkt=0&ilv=&iaus=M&ise=2009W&iord=A&ilek=On&inot=On&imod=O&isid="+isid+"1");
+						xmlHttpObject.send("iknr=521&ipkt=0&ilv=&iaus=M&ise=2009W&iord=A&ilek=On&inot=On&imod=L&isid="+isid+"1");
 						//using DOM to modify the xul-file and insert the information
 						function infoReceived() {
 							var samplepopup = document.getElementById('showpiswires');
@@ -109,7 +105,6 @@ var piswirequest = {
 								var endposition = position + output.search("<") - 2; //-2 to remove \n and space
 								var description = xmlHttpObject.responseText.substring(position + 2 + 1, endposition); //move +2 because we are at <TD and skip " >" // +1 to remove \n
 								var position2 = output.search("TARGET=details>");
-								//alert(position2);
 								if(position2 == -1 || position2 > 150) { //just guessing that the next link must be further away
 									//no link, just name of lecturer
 									position2 = output.search("<I>");
