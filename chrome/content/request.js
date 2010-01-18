@@ -90,7 +90,7 @@ var piswirequest = {
 								//alert(tempposition + output);
 								//alert(tdcount + output);
 								tdcount++;
-							} while (tdcount < 75);
+							} while (tdcount < 69); //69 for link, 75 for description
 
 							/* final array will look like this
 								[0] = description
@@ -100,6 +100,19 @@ var piswirequest = {
 							*/
 							//check if more to go (even on first)
 							for (var i=0; td_max - tdcount > 4; ++i) {
+								//TODO icon parse
+								var iconstart = output.search("SRC=");
+								var temp_output = output.slice(iconstart);
+								var iconend = iconstart + temp_output.search(" ");
+								var gif = "http://sibelius.pri.univie.ac.at:8885" + output.substring(iconstart + 4, iconend); //+4 to skip SRC=
+
+								for(var k=0; k<6; ++k) {  //6 TDs further is description
+									var tempposition = output.search("<TD");
+									position = position + tempposition + 3;
+									output = output.slice(tempposition + 3); //+3 so current "<TD" is skipped
+									++tdcount; //TODO right number of counts?? - seems to work
+								}
+
 								var current = new Array();
 								lvs.push(current); // = lvs[i]
 								var endposition = position + output.search("<") - 2; //-2 to remove \n and space
@@ -114,8 +127,15 @@ var piswirequest = {
 									//link for lecturer
 									endposition = output.search("</A>");
 									var lecturer = output.substring(position2 + 15, endposition); //+15 to skip TARGET=details>
-									//alert(output);
-									//alert(lecturer);
+								}
+								position2 = output.search("<BR>");
+								if(position2 == -1 || position2 - endposition > 50) {//50 guess
+									//no info
+									var mark = "";
+								} else {
+									temp_output = output.slice(position2); //reuse temp_output
+									endposition = position2 + temp_output.search("</") - 1; //-1 to skip new line TODO trim properly
+									var mark = output.substring(position2 + 4, endposition); //+4 to skip <BR>
 								}
 
 								/* not working -> adjust parser before ... 
@@ -128,21 +148,45 @@ var piswirequest = {
 								//add the results to the array
 								lvs[i].push(description);
 								lvs[i].push(lecturer);
+								lvs[i].push(mark);
+								lvs[i].push(gif);
 								
-								for(var k=0; k<13; ++k) {  //13 TDs further is next lv
+								for(var k=0; k<7; ++k) {  //7 TDs further next lv icon / 13 TDs further is next lv description
 									var tempposition = output.search("<TD");
 									position = position + tempposition + 3;
 									output = output.slice(tempposition + 3); //+3 so current "<TD" is skipped
 									++tdcount; //TODO right number of counts?? - seems to work
 								}
-								//TODO: parse beurteilungsinfo -> mark and parse .gif
 							}
 
 							//test output
 							var ausgabe = "";
-							for (var i=0; i<lvs.length; ++i)
-								ausgabe = ausgabe + "Name: " + lvs[i][0] + "\nLecturer: " + lvs[i][1] + "\n";
-							alert(ausgabe);
+
+							//start dynamically adjusting XUL-interface
+							//remove any hbox-elements (previous results) but not piswi-logo
+							while(samplepopup.lastChild != samplepopup.firstChild)
+								samplepopup.removeChild(samplepopup.lastChild);
+							const XUL_NS = "http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul";
+							for (var i=0; i<lvs.length; ++i) {
+								ausgabe = ausgabe + "Name: " + lvs[i][0] + "\nLecturer: " + lvs[i][1] + "\nMark: " + lvs[i][2] + "\nIcon: " + lvs[i][3] + "\n";
+								var hbox = document.createElementNS(XUL_NS, "hbox");
+								samplepopup.appendChild(hbox);
+								var image = document.createElementNS(XUL_NS, "image");
+								image.setAttribute("src", lvs[i][3]);
+								hbox.appendChild(image);
+								var description = document.createElementNS(XUL_NS, "description");
+								description.setAttribute("value", lvs[i][0] + " - " + lvs[i][1]);
+								hbox.appendChild(description);
+								if(lvs[i][2] != "") {
+									//mark present
+									var hbox2 = document.createElementNS(XUL_NS, "hbox");
+									var mark = document.createElementNS(XUL_NS, "description");
+									mark.setAttribute("value", "       " + lvs[i][2]);
+									hbox2.appendChild(mark);
+									samplepopup.appendChild(hbox2);
+								}
+							}
+							//alert(ausgabe);
 
 							/*var output = xmlHttpObject.responseXML;
 
