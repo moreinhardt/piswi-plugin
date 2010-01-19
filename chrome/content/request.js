@@ -23,7 +23,7 @@ var piswirequest = {
     var xmlHttpObject = new XMLHttpRequest();
 
     var kennwort = "KENNWORT"; //TODO
-    var matnr = "0804616";
+    var matnr = "MATNUMMER";
     // Funktion, die bei Statusänderungen reagiert
     function handleStateChange()
     {
@@ -58,7 +58,7 @@ var piswirequest = {
 									alert("Error loading page\n");
 							}
 						}
-						xmlHttpObject.send("iknr=521&ipkt=0&ilv=&iaus=M&ise=2009W&iord=A&ilek=On&inot=On&imod=L&isid="+isid+"1");
+						xmlHttpObject.send("iknr=521&ipkt=0&ilv=&iaus=M&ise=0&iord=V&ilek=On&inot=On&imod=L&isid="+isid+"1"); //ise=0 -> alle semester, iord=V -> nach beginn
 						//using DOM to modify the xul-file and insert the information
 						function infoReceived() {
 							var samplepopup = document.getElementById('showpiswires');
@@ -90,7 +90,7 @@ var piswirequest = {
 								//alert(tempposition + output);
 								//alert(tdcount + output);
 								tdcount++;
-							} while (tdcount < 69); //69 for link, 75 for description
+							} while (tdcount < 66); //66 for link, 72 for description
 
 							/* final array will look like this
 								[0] = description
@@ -118,7 +118,7 @@ var piswirequest = {
 								var endposition = position + output.search("<") - 2; //-2 to remove \n and space
 								var description = xmlHttpObject.responseText.substring(position + 2 + 1, endposition); //move +2 because we are at <TD and skip " >" // +1 to remove \n
 								var position2 = output.search("TARGET=details>");
-								if(position2 == -1 || position2 > 150) { //just guessing that the next link must be further away
+								if(position2 == -1 || position2 > 150 || output.search("-&gt; Sammelzeugnis") == position2 + 15) { //just guessing that the next link must be further away / check that link is not for sammelzeugnis
 									//no link, just name of lecturer
 									position2 = output.search("<I>");
 									endposition = output.search("</I>");
@@ -133,8 +133,8 @@ var piswirequest = {
 									//no info
 									var mark = "";
 								} else {
-									temp_output = output.slice(position2); //reuse temp_output
-									endposition = position2 + temp_output.search("</") - 1; //-1 to skip new line TODO trim properly
+									temp_output = output.slice(position2 + 1); //reuse temp_output /+1 to skip "<" to not hit it in next search
+									endposition = position2 + 1 + temp_output.search("<") - 1; //-1 to skip new line TODO trim properly /+1 to add the "<" skipped before
 									var mark = output.substring(position2 + 4, endposition); //+4 to skip <BR>
 								}
 
@@ -151,7 +151,7 @@ var piswirequest = {
 								lvs[i].push(mark);
 								lvs[i].push(gif);
 								
-								for(var k=0; k<7; ++k) {  //7 TDs further next lv icon / 13 TDs further is next lv description
+								for(var k=0; k<6; ++k) {  //6 TDs further next lv icon / 12 TDs further is next lv description
 									var tempposition = output.search("<TD");
 									position = position + tempposition + 3;
 									output = output.slice(tempposition + 3); //+3 so current "<TD" is skipped

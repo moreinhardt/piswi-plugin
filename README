@@ -60,4 +60,5 @@ CHANGELOG
 	Moritz: request.js - parser now working on LVs with description + lecturer
 19.01.2010
 	Moritz: request.js - parser should work, adjusting XUL-interface properly now
-		sample.xul - clicking the button will send request and update popup
+	Moritz: sample.xul - clicking the button will send request and update popup
+	Moritz: request.js - major bugfix in parser and request
