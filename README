@@ -67,3 +67,4 @@ CHANGELOG
 	Moritz: request.js - added whole options functionality
 	Moritz: created options.xul
 
+TODO: bug in request if special characters in password
