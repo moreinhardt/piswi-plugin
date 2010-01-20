@@ -13,17 +13,50 @@ window.addEventListener("load", function(e) { openprefs.onLoad(e); }, false);
 
 
 var piswirequest = {
-  onLoad: function() {
+  prefs: null,
+  kennwort:  "",
+  matnr:  "",
+
+  startup: function() {
     // initialization code
+    // Register to receive notifications of preference changes
+    this.prefs = Components.classes["@mozilla.org/preferences-service;1"]
+        .getService(Components.interfaces.nsIPrefService)
+        .getBranch("piswirequest.");
+    this.prefs.QueryInterface(Components.interfaces.nsIPrefBranch2);
+    this.prefs.addObserver("", this, false);
+
+    this.matnr = this.prefs.getCharPref("login");
+    this.kennwort = this.prefs.getCharPref("pw");
+
     this.initialized = true;
   },
+
+  shutdown: function() {
+    this.prefs.removeObserver("", this);
+  },
+
+  observe: function(subject, topic, data) {
+    if ( topic != "nsPref:changed") 
+      return;
+    switch(data) {
+      case "login":
+        this.matnr = this.prefs.getCharPref("login");
+        break;
+      case "pw":
+        this.kennwort = this.prefs.getCharPref("pw");
+        break;
+    }
+  },
+
+  
 
   onMenuItemCommand: function() {
 //HIER beginnts!!
     var xmlHttpObject = new XMLHttpRequest();
 
-    var kennwort = "KENNWORT"; //TODO
-    var matnr = "MATNUMMER";
+    var kennwort = piswirequest.kennwort;
+    var matnr = piswirequest.matnr;
     // Funktion, die bei Statusänderungen reagiert
     function handleStateChange()
     {
@@ -120,7 +153,7 @@ var piswirequest = {
 													*/
 													//check if more to go (even on first)
 													for (var i=0; td_max - tdcount > 4; ++i) {
-														//TODO icon parse
+														//icon parse
 														var iconstart = output.search("SRC=");
 														var temp_output = output.slice(iconstart);
 														var iconend = iconstart + temp_output.search(" ");
@@ -207,12 +240,6 @@ var piswirequest = {
 														}
 													}
 													//alert(ausgabe);
-
-													/*var output = xmlHttpObject.responseXML;
-
-													var tds = output.getElementsByTagName("TD");
-													var first_course = tds.item(199);
-													alert(first_course.childNodes.item(0).nodeValue);*/
 												}
 											} else
 												alert("error loading page\n");
@@ -226,6 +253,7 @@ var piswirequest = {
 						alert("Error loading page\n");  
 				}
 			};
+			//alert(matnr+"\n"+kennwort+"\ngeschickt");
 			xmlHttpObject.send("imnr="+matnr+"&ikenn="+kennwort+"&isid="+isid+"&imod="+imod);
 		} else alert("error loading page!");
 	}
@@ -240,4 +268,5 @@ var piswirequest = {
   }
 };
 
-window.addEventListener("load", function(e) { piswirequest.onLoad(e); }, false); 
+window.addEventListener("load", function(e) { piswirequest.startup(); }, false); 
+window.addEventListener("unload", function(e) { piswirequest.shutdown(); }, false); 

@@ -41,7 +41,7 @@
   <statusbar id="status-bar">
    <statusbarpanel id="status-bar-sample-1">
    <toolbarbutton src="http://piswi.pri.univie.ac.at/piswi/1.gif"
-   				  class="statusbarpanel-iconic" popup="showpiswires" oncommand="piswirequest.onMenuItemCommand(event);"
+   				  class="statusbarpanel-iconic" popup="showpiswires" oncommand="piswirequest.onMenuItemCommand();"
    				  />
    </statusbarpanel>
  </statusbar>

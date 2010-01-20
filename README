@@ -62,3 +62,8 @@ CHANGELOG
 	Moritz: request.js - parser should work, adjusting XUL-interface properly now
 	Moritz: sample.xul - clicking the button will send request and update popup
 	Moritz: request.js - major bugfix in parser and request
+20.01.2010
+	Moritz: install.rdf - added options-url
+	Moritz: request.js - added whole options functionality
+	Moritz: created options.xul
+

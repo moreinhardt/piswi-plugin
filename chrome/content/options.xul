@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<?xml-stylesheet href="chrome://global/skin/" type="text/css"?>
+ 
+<prefwindow id="piswirequest-prefs"
+     title="Piswirequest - Options"
+     xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">
+ 
+<prefpane id="piswirequest-pane" label="Piswirequest Settings">
+  <preferences>
+    <preference id="piswi_login" name="piswirequest.login" type="string"/>
+    <preference id="piswi_pw" name="piswirequest.pw" type="string"/>
+  </preferences>
+ 
+  <hbox align="center">
+    <label control="login" value="Login (Matrikelnummer): "/>
+    <textbox preference="piswi_login" id="login" maxlength="7"/>
+  </hbox>
+  <hbox align="center">
+    <label control="pw" value="Passwort: "/>
+    <textbox preference="piswi_pw" id="pw" type="password"/>
+  </hbox>
+</prefpane>
+ 
+</prefwindow>
