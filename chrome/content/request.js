@@ -52,6 +52,19 @@ var piswirequest = {
   
 
   onMenuItemCommand: function() {
+    //dynamically adjusting the xul-interface
+    //remove any hbox-elements (previous results) but not piswi-logo
+    var samplepopup = document.getElementById('showpiswires');
+    while(samplepopup.lastChild != samplepopup.firstChild)
+	samplepopup.removeChild(samplepopup.lastChild);
+    const XUL_NS = "http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul";
+    var hbox_loading = document.createElementNS(XUL_NS, "hbox");
+    samplepopup.appendChild(hbox_loading);
+    var loading = document.createElementNS(XUL_NS, "description");
+    loading.setAttribute("value", " Retrieving information ... ");
+    hbox_loading.appendChild(loading);
+    //end adjusting xul-interface
+
 //HIER beginnts!!
     var xmlHttpObject = new XMLHttpRequest();
 
@@ -219,7 +232,6 @@ var piswirequest = {
 													//remove any hbox-elements (previous results) but not piswi-logo
 													while(samplepopup.lastChild != samplepopup.firstChild)
 														samplepopup.removeChild(samplepopup.lastChild);
-													const XUL_NS = "http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul";
 													for (var i=0; i<lvs.length; ++i) {
 														ausgabe = ausgabe + "Name: " + lvs[i][0] + "\nLecturer: " + lvs[i][1] + "\nMark: " + lvs[i][2] + "\nIcon: " + lvs[i][3] + "\n";
 														var hbox = document.createElementNS(XUL_NS, "hbox");
