@@ -89,6 +89,21 @@ var piswirequest = {
 			xmlHttpObject.onreadystatechange = function (aEvt) {  
 				if (xmlHttpObject.readyState == 4) {  
 					if(xmlHttpObject.status == 200) { //logged in
+						//test if login failed
+						if(xmlHttpObject.responseText.search("Du hast eine falsche Matrikelnummer") != -1) {
+							var samplepopup = document.getElementById('showpiswires');
+							while(samplepopup.lastChild != samplepopup.firstChild)
+								samplepopup.removeChild(samplepopup.lastChild);
+							var hbox_error = document.createElementNS(XUL_NS, "hbox");
+							samplepopup.appendChild(hbox_error);
+							var error = document.createElementNS(XUL_NS, "description");
+							error.setAttribute("value", " !! Falsche Matrikelnummer / Passwort !! ");
+							hbox_error.appendChild(error);
+							return;
+							//end adjusting xul-interface
+						}
+						//end test
+
 						xmlHttpObject.open('GET', 'http://sibelius.pri.univie.ac.at:8885/piswi/xxx/piswi.x?isid='+isid+'1&imod=L'); // send to display lvs /1 added after isid
 						xmlHttpObject.setRequestHeader('Connection','keep-alive');
 						xmlHttpObject.setRequestHeader('imnr',matnr);
