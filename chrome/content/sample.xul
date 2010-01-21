@@ -12,9 +12,6 @@
       <image src="chrome://piswi/skin/piswilogo.png"/>    
      </menuitem>
     </hbox>
-    <hbox>
-	 <description value="LOADING..."/>
-	</hbox>
   </menupopup>
 </popupset>
 

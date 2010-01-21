@@ -55,8 +55,6 @@ var piswirequest = {
     //dynamically adjusting the xul-interface
     //remove any hbox-elements (previous results) but not piswi-logo
     var samplepopup = document.getElementById('showpiswires');
-    while(samplepopup.lastChild != samplepopup.firstChild)
-	samplepopup.removeChild(samplepopup.lastChild);
     const XUL_NS = "http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul";
     var hbox_loading = document.createElementNS(XUL_NS, "hbox");
     samplepopup.appendChild(hbox_loading);
