@@ -62,6 +62,7 @@ var piswirequest = {
     var loading = document.createElementNS(XUL_NS, "description");
     loadingpic.setAttribute("src", "chrome://piswi/skin/load.gif");
     loading.setAttribute("value", " Retrieving information ... ");
+    loading.style.color = "red";
     hbox_loading.appendChild(loadingpic);
     hbox_loading.appendChild(loading);
     //end adjusting xul-interface
