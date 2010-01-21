@@ -100,6 +100,7 @@ var piswirequest = {
 							samplepopup.appendChild(hbox_error);
 							var error = document.createElementNS(XUL_NS, "description");
 							error.setAttribute("value", " !! Falsche Matrikelnummer / Passwort !! ");
+							error.style.color = "red";
 							hbox_error.appendChild(error);
 							return;
 							//end adjusting xul-interface
