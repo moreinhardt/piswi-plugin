@@ -69,6 +69,7 @@ CHANGELOG
 21.01.2010
 	Benjamin: Added Loader-GIF
 	Moritz: moved image files to chrome/skin/ and adapted paths
-		chrome.manifest - added skin
+	Moritz: chrome.manifest - added skin
+		removed test-buttons
 
 TODO: bug in request if special characters in password
