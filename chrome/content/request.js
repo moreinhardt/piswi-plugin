@@ -60,8 +60,11 @@ var piswirequest = {
     const XUL_NS = "http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul";
     var hbox_loading = document.createElementNS(XUL_NS, "hbox");
     samplepopup.appendChild(hbox_loading);
+    var loadingpic = document.createElementNS(XUL_NS, "image");
     var loading = document.createElementNS(XUL_NS, "description");
+    loadingpic.setAttribute("src", "chrome://piswi/content/load.gif");
     loading.setAttribute("value", " Retrieving information ... ");
+    hbox_loading.appendChild(loadingpic);
     hbox_loading.appendChild(loading);
     //end adjusting xul-interface
 

@@ -66,5 +66,6 @@ CHANGELOG
 	Moritz: install.rdf - added options-url
 	Moritz: request.js - added whole options functionality
 	Moritz: created options.xul
+	Benjamin: Added Loader-GIF
 
 TODO: bug in request if special characters in password
