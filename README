@@ -71,5 +71,6 @@ CHANGELOG
 	Moritz: moved image files to chrome/skin/ and adapted paths
 	Moritz: chrome.manifest - added skin
 		removed test-buttons
+	Benjamin: due to a new Version of Firefox, our plugin is now compatible with it.
 
 TODO: bug in request if special characters in password
