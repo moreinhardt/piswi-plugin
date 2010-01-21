@@ -1,2 +1,3 @@
 content   piswi   chrome/content/
+skin      piswi   classic/1.0     chrome/skin/
 overlay   chrome://browser/content/browser.xul   chrome://piswi/content/sample.xul

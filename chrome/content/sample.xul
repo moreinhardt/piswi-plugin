@@ -9,7 +9,7 @@
   <menupopup id="showpiswires" position="before_end">
     <hbox>
      <menuitem oncommand="window.open('http://piswi.pri.univie.ac.at')">
-      <image src="chrome://piswi/content/piswilogo.png"/>    
+      <image src="chrome://piswi/skin/piswilogo.png"/>    
      </menuitem>
     </hbox>
     <hbox>
@@ -19,16 +19,9 @@
 </popupset>
 
 
-
-  <menupopup id="menu_ToolsPopup">
-    <menuitem id="piswipref" label="PISWI Preferences"
-        oncommand="openprefs.onMenuItemCommand(event);"/>
-    <menuitem id="piswirequest" label="send PISWI request" oncommand="piswirequest.onMenuItemCommand(event);"/>
-  </menupopup>
-  
   <statusbar id="status-bar">
    <statusbarpanel id="status-bar-sample-1">
-   <toolbarbutton src="http://piswi.pri.univie.ac.at/piswi/1.gif"
+   <toolbarbutton src="chrome://piswi/skin/1.gif"
    				  class="statusbarpanel-iconic" popup="showpiswires" oncommand="piswirequest.onMenuItemCommand();"
    				  />
    </statusbarpanel>

@@ -62,7 +62,7 @@ var piswirequest = {
     samplepopup.appendChild(hbox_loading);
     var loadingpic = document.createElementNS(XUL_NS, "image");
     var loading = document.createElementNS(XUL_NS, "description");
-    loadingpic.setAttribute("src", "chrome://piswi/content/load.gif");
+    loadingpic.setAttribute("src", "chrome://piswi/skin/load.gif");
     loading.setAttribute("value", " Retrieving information ... ");
     hbox_loading.appendChild(loadingpic);
     hbox_loading.appendChild(loading);

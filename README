@@ -66,6 +66,9 @@ CHANGELOG
 	Moritz: install.rdf - added options-url
 	Moritz: request.js - added whole options functionality
 	Moritz: created options.xul
+21.01.2010
 	Benjamin: Added Loader-GIF
+	Moritz: moved image files to chrome/skin/ and adapted paths
+		chrome.manifest - added skin
 
 TODO: bug in request if special characters in password
