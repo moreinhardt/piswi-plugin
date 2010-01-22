@@ -72,5 +72,7 @@ CHANGELOG
 	Moritz: chrome.manifest - added skin
 		removed test-buttons
 	Benjamin: due to a new Version of Firefox, our plugin is now compatible with it.
+22.01.2010
+	Moritz: install.rdf - added icon-url
 
 TODO: bug in request if special characters in password

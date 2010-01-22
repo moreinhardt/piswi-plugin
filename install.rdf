@@ -25,5 +25,6 @@
     <em:description>This plug-in lets you easily display your current results/marks from your PISWI account.</em:description>
     <em:creator>Cigan Richard, Kitzinger Benjamin, Reinhardt Moritz</em:creator>
     <em:homepageURL>http://github.com/Taifun/piswi-plugin</em:homepageURL>
+    <em:iconURL>chrome://piswi/skin/1.gif</em:iconURL>
   </Description>      
 </RDF>
