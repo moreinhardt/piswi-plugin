@@ -24,6 +24,8 @@ Links:
 	git:
 	http://git.or.cz/course/svn.html
 	http://spheredev.org/wiki/Git_for_the_lazy
+	http://book.git-scm.com/index.html
+	http://progit.org/book/de/ch3-3.html
 	firefox-extension:
 	http://www.borngeek.com/firefox/toolbar-tutorial/
 	http://kb.mozillazine.org/Getting_started_with_extension_development#Registering_your_extension_in_the_Extension_Manager anleitung um lokal zu testen //wichtig: firefox nach Änderungen an den Dateien immer neustarten!
