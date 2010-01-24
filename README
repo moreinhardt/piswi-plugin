@@ -74,8 +74,5 @@ CHANGELOG
 	Benjamin: due to a new Version of Firefox, our plugin is now compatible with it.
 22.01.2010
 	Moritz: install.rdf - added icon-url
-24.01.2010
-	Richard: sample.xul - added tabs to the interface to test out "prufung" display
-	Richard: request.js - split the information retriever function to split the xul dynamic modification- formating for Prufungen not working properly
 
 TODO: bug in request if special characters in password
