@@ -328,7 +328,7 @@ var piswirequest = {
 															alert("Error loading page\n");
 													}
 												}
-												xmlHttpObject.send("iknr=521&ipkt=&ipau=M&ivon=&ibis=&ipor=D&ipot=On&ipde=On&iple=On&imod=Q&isid="+isid+"3");
+												xmlHttpObject.send("iknr=521&ipkt=&ipau=M&ivon=&ibis=&ipor=D&iple=On&ipno=On&imod=Q&isid="+isid+"3");
 												//using DOM to modify the xul-file and insert the information
 												function infoReceived() {
 													var samplepopup = document.getElementById('showpiswires');
@@ -360,7 +360,7 @@ var piswirequest = {
 														//alert(tempposition + output);
 														//alert(tdcount + output);
 														tdcount++;
-													} while (tdcount < 66); //66 for link, 72 for description
+													} while (tdcount < 62); //66 for link, 72 for description
 
 													/* final array will look like this
 														[0] = description
@@ -376,7 +376,7 @@ var piswirequest = {
 														var iconend = iconstart + temp_output.search(" ");
 														var gif = "http://sibelius.pri.univie.ac.at:8885" + output.substring(iconstart + 4, iconend); //+4 to skip SRC=
 
-														for(var k=0; k<6; ++k) {  //6 TDs further is description
+														for(var k=0; k<3; ++k) {  //6 TDs further is description
 															var tempposition = output.search("<TD");
 															position = position + tempposition + 3;
 															output = output.slice(tempposition + 3); //+3 so current "<TD" is skipped
@@ -388,7 +388,7 @@ var piswirequest = {
 														var endposition = position + output.search("<") - 2; //-2 to remove \n and space
 														var description = xmlHttpObject.responseText.substring(position + 2 + 1, endposition); //move +2 because we are at <TD and skip " >" // +1 to remove \n
 														var position2 = output.search("TARGET=details>");
-														if(position2 == -1 || position2 > 150 || output.search("-&gt; Sammelzeugnis") == position2 + 15) { //just guessing that the next link must be further away / check that link is not for sammelzeugnis
+														if(position2 == -1 || position2 > 160 || output.search("-&gt; Sammelzeugnis") == position2 + 15) { //just guessing that the next link must be further away / check that link is not for sammelzeugnis
 															//no link, just name of lecturer
 															position2 = output.search("<I>");
 															endposition = output.search("</I>");
@@ -421,7 +421,7 @@ var piswirequest = {
 														lvs[i].push(mark);
 														lvs[i].push(gif);
 														
-														for(var k=0; k<6; ++k) {  //6 TDs further next lv icon / 12 TDs further is next lv description
+														for(var k=0; k<8; ++k) {  //6 TDs further next lv icon / 12 TDs further is next lv description
 															var tempposition = output.search("<TD");
 															position = position + tempposition + 3;
 															output = output.slice(tempposition + 3); //+3 so current "<TD" is skipped
