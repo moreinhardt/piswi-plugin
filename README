@@ -79,5 +79,7 @@ CHANGELOG
 24.01.2010
 	Richard: sample.xul - added tabs to the interface to test out "prufung" display
 	Richard: request.js - split the information retriever function to split the xul dynamic modification- formating for Prufungen not working properly
+27.01.2010
+	Moritz: request.js - 2 small bugfixes in pruefungen-parser
 
 TODO: bug in request if special characters in password
