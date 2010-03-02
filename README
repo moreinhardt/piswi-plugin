@@ -76,5 +76,9 @@ CHANGELOG
 	Benjamin: due to a new Version of Firefox, our plugin is now compatible with it.
 22.01.2010
 	Moritz: install.rdf - added icon-url
+02.03.2010
+	Moritz: request.js - pruefungen+lvs parsed and loaded correctly now
+	Moritz: sample.xul - added tabbbox tabs tabpanels -> raw to be filled dynamically
+	Moritz: removed unnecessary files
 
 TODO: bug in request if special characters in password

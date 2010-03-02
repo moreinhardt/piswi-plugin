@@ -7,11 +7,29 @@
   
 <popupset>
   <menupopup id="showpiswires" position="before_end">
-    <hbox>
-     <menuitem oncommand="window.open('http://piswi.pri.univie.ac.at')">
-      <image src="chrome://piswi/skin/piswilogo.png"/>    
-     </menuitem>
-    </hbox>
+    <vbox>
+      <hbox>
+        <menuitem oncommand="window.open('http://piswi.pri.univie.ac.at')">
+          <image src="chrome://piswi/skin/piswilogo.png"/>    
+        </menuitem>
+      </hbox>
+      <tabbox id="myTabList" selectedIndex="0">
+        <tabs>
+          <tab label="Lehrveranstaltungen" id="lv_tab"/>
+          <tab label="Prüfungen" id="pr_tab"/>
+        </tabs>
+	<tabpanels>
+		<tabpanel>
+			<vbox id="lv_panel">
+			</vbox>
+		</tabpanel>
+		<tabpanel>
+			<vbox id="pr_panel">
+			</vbox>
+		</tabpanel>
+	</tabpanels>
+      </tabbox>
+    </vbox>
   </menupopup>
 </popupset>
 
