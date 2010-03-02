@@ -213,17 +213,26 @@ var piswirequest = {
 														lvs.push(current); // = lvs[i]
 														var endposition = position + output.search("<") - 2; //-2 to remove \n and space
 														var description = xmlHttpObject.responseText.substring(position + 2 + 1, endposition); //move +2 because we are at <TD and skip " >" // +1 to remove \n
+														var lecturer = "";
 														var position2 = output.search("TARGET=details>");
 														if(position2 == -1 || position2 > 150 || output.search("-&gt; Sammelzeugnis") == position2 + 15) { //just guessing that the next link must be further away / check that link is not for sammelzeugnis
 															//no link, just name of lecturer
 															position2 = output.search("<I>");
 															endposition = output.search("</I>");
-															var lecturer = output.substring(position2 + 3, endposition); //+3 to skip <I>
+															lecturer = output.substring(position2 + 3, endposition); //+3 to skip <I>
 														} else {
 															//link for lecturer
-															endposition = output.search("</A>");
-															var lecturer = output.substring(position2 + 15, endposition); //+15 to skip TARGET=details>
+															//detect more than one lecturer with links
+															var output_copy = output;
+															do {
+																endposition = output_copy.search("</A>");
+																lecturer = lecturer + output_copy.substring(position2 + 15, endposition) + ", "; //+15 to skip TARGET=details>
+																output_copy = output_copy.slice(endposition+1);
+																position2 = output_copy.search("TARGET=details>");
+															} while (position2 != -1 && position2 < 160 && output_copy.search("-&gt; Sammelzeugnis") != position2 + 15);
+															lecturer = lecturer.slice(0, lecturer.length-2); //cut ", "
 														}
+														endposition = output.search("</I>"); //reset endposition
 														position2 = output.search("<BR>");
 														if(position2 == -1 || position2 - endposition > 50) {//50 guess
 															//no info
@@ -246,8 +255,16 @@ var piswirequest = {
 														lvs[i].push(lecturer);
 														lvs[i].push(mark);
 														lvs[i].push(gif);
-														
-														for(var k=0; k<6; ++k) {  //6 TDs further next lv icon / 12 TDs further is next lv description
+
+														var tds_togo = 0;
+														var pattern = /[0-9]?[0-9]\.[1]?[0-9]\.[0-9]{4}/;
+														var next_date = output.search(pattern);
+														if( next_date > 800 || next_date == -1) //lv after another
+															tds_togo = 6;
+														else
+															tds_togo = 8;
+
+														for(var k=0; k<tds_togo; ++k) {  //6 TDs further next lv icon / 12 TDs further is next lv description
 															var tempposition = output.search("<TD");
 															position = position + tempposition + 3;
 															output = output.slice(tempposition + 3); //+3 so current "<TD" is skipped
@@ -257,7 +274,7 @@ var piswirequest = {
 
 
 
-//BEGIN PRÜFUNGEN - muss noch eingerückt werden
+//BEGIN PRÜFUNGEN
 													xmlHttpObject.open('GET', 'http://sibelius.pri.univie.ac.at:8885/piswi/xxx/piswi.x?isid='+isid+'4&imod=P'); // send to display prüfungen /4 added after isid
 													xmlHttpObject.setRequestHeader('Connection','keep-alive');
 													xmlHttpObject.setRequestHeader('imnr',matnr);
