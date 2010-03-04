@@ -87,3 +87,5 @@ RELEASE v1.0
 
 TODO: bug in request if special characters in password
 TODO: bug if more than 2 exams on one day
+TODO: store password in password manager
+TODO: localization
