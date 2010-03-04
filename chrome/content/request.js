@@ -238,9 +238,17 @@ var piswirequest = {
 															//no info
 															var mark = "";
 														} else {
-															temp_output = output.slice(position2 + 1); //reuse temp_output /+1 to skip "<" to not hit it in next search
-															endposition = position2 + 1 + temp_output.search("<") - 1; //-1 to skip new line TODO trim properly /+1 to add the "<" skipped before
-															var mark = output.substring(position2 + 4, endposition); //+4 to skip <BR>
+															// check again after <BR>
+															var position_end_td = output.search("</TD");
+															if(position_end_td - position2 <  6) {
+																//no info
+																var mark = "";
+															} else {
+
+																temp_output = output.slice(position2 + 1); //reuse temp_output /+1 to skip "<" to not hit it in next search
+																endposition = position2 + 1 + temp_output.search("<") - 1; //-1 to skip new line TODO trim properly /+1 to add the "<" skipped before
+																var mark = output.substring(position2 + 4, endposition); //+4 to skip <BR>
+															}
 														}
 
 														/* not working -> adjust parser before ... 
@@ -370,7 +378,8 @@ var piswirequest = {
 																					var description = xmlHttpObject.responseText.substring(position + 2 + 1, endposition); //move +2 because we are at <TD and skip " >" // +1 to remove \n
 																					var lecturer = "";
 																					var position2 = output.search("TARGET=details>");
-																					if(position2 == -1 || position2 > 160 || output.search("-&gt; Sammelzeugnis") == position2 + 15) { //just guessing that the next link must be further away / check that link is not for sammelzeugnis
+//TODO - im if BUG - 160 erhöhen??
+																					if(position2 == -1 || position2 > 200 || output.search("-&gt; Sammelzeugnis") == position2 + 15) { //just guessing that the next link must be further away / check that link is not for sammelzeugnis
 																						//no link, just name of lecturer
 																						position2 = output.search("<I>");
 																						endposition = output.search("</I>");
@@ -393,9 +402,16 @@ var piswirequest = {
 																						//no info
 																						var mark = "";
 																					} else {
-																						temp_output = output.slice(position2 + 1); //reuse temp_output /+1 to skip "<" to not hit it in next search
-																						endposition = position2 + 1 + temp_output.search("<") - 1; //-1 to skip new line TODO trim properly /+1 to add the "<" skipped before
-																						var mark = output.substring(position2 + 4, endposition); //+4 to skip <BR>
+																						// check again after <BR>
+																						var position_end_td = output.search("</TD");
+																						if(position_end_td - position2 <  4) {
+																							//no info
+																							var mark = "";
+																						} else {
+																							temp_output = output.slice(position2 + 1); //reuse temp_output /+1 to skip "<" to not hit it in next search
+																							endposition = position2 + 1 + temp_output.search("<") - 1; //-1 to skip new line TODO trim properly /+1 to add the "<" skipped before
+																							var mark = output.substring(position2 + 4, endposition); //+4 to skip <BR>
+																						}
 																					}
 
 																					/* not working -> adjust parser before ... 
