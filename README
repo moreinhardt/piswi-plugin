@@ -83,6 +83,7 @@ CHANGELOG
 04.03.2010
 	Moritz: request.js - small bugfix - <BR>
 RELEASE v1.0
+name: piswi-request
 
 
 TODO: bug in request if special characters in password

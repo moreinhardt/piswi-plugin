@@ -84,6 +84,22 @@ var piswirequest = {
 
     var kennwort = piswirequest.kennwort;
     var matnr = piswirequest.matnr;
+
+    //check if matnr entered
+    if(matnr == "") {
+	while(lv_panel.lastChild)
+		lv_panel.removeChild(lv_panel.lastChild);
+	while(pr_panel.lastChild)
+		pr_panel.removeChild(pr_panel.lastChild);
+	var hbox_error = document.createElementNS(XUL_NS, "hbox");
+	lv_panel.appendChild(hbox_error);
+	var error = document.createElementNS(XUL_NS, "description");
+	error.setAttribute("value", " !! Keine Matrikelnummer angegeben !! ");
+	error.style.color = "red";
+	hbox_error.appendChild(error);
+	return;
+    }
+
     // Funktion, die bei Statusänderungen reagiert
     function handleStateChange()
     {
